@@ -1,68 +1,30 @@
-# =========================================================
-# 1. CREDENTIALS & SECRETS (STRICTLY IGNORED)
-# =========================================================
+# Credentials & Secrets
 ai_data/models_config.json
 ai_data/git_config.json
 .env
 *.env
-
-# Keep template examples tracked
 !ai_data/models_config.example.json
 !ai_data/git_config.example.json
 
-# =========================================================
-# 2. RUNTIME LOCKS, LOGS & OS ARTIFACTS
-# =========================================================
+# Runtime Artifacts & Locks
 *.pyc
 __pycache__/
 *.log
-*.pid
-*.stale
+*.pid*
 *.lock
 *.wal
 *.shm
+*.stale
 *.tmp
-.DS_Store
-Thumbs.db
 
-# =========================================================
-# 3. ENGINE TIERS & ARTIFACTS
-# =========================================================
-# Transient runtime & deleted trash
+# Engine Session Tiers
 current/
+last_run/
+history/
 trash/*
 !trash/.gitkeep
-
-# Old internal test runs & monolith backups
-history/
-!history/.gitkeep
 _backup_monoliths/
 
-# General AI cache ignore rule
-ai_data/cache/*.json
-ai_data/cache/**/*.json
+# AI Cache
+ai_data/cache/*
 !ai_data/cache/.gitkeep
-
-# =========================================================
-# 4. SHOWCASE TELEMETRY: NOVAPULSE (WHITELISTED)
-# =========================================================
-# Allow NovaPulse AI Analysis Summaries
-!ai_data/cache/nova_pulse/
-!ai_data/cache/nova_pulse/**
-
-# Allow NovaPulse Session Metadata & Patches
-!last_run/
-!last_run/nova_pulse/
-!last_run/nova_pulse/**
-
-# But ignore transient database memory locks inside last_run
-last_run/**/worker.pid*
-last_run/**/*.lock
-last_run/**/*.wal
-last_run/**/*.shm
-# Global ignore for SQLite WAL/SHM locks
-*.wal
-*.shm
-*.lock
-*.stale
-*.pid*
