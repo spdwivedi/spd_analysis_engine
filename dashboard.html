@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SPD Analysis Engine — Offline Dashboard Viewer</title>
+  <style>
+    /* ==========================================================================
+       SPD Offline Dashboard — Embedded Styles (100% Self-Contained)
+       ========================================================================== */
+    :root {
+      --bg-app: #090d16;
+      --bg-header: #0f172a;
+      --bg-card: #131c31;
+      --bg-card-hover: #18243e;
+      --bg-input: #0b1325;
+      --bg-terminal: #050811;
+      --border-subtle: #1e293b;
+      --border-card: #202d48;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --accent-green: #22c55e;
+      --accent-green-bg: rgba(34, 197, 94, 0.12);
+      --accent-blue: #38bdf8;
+      --accent-blue-bg: rgba(56, 189, 248, 0.12);
+      --accent-red: #ef4444;
+      --accent-red-bg: rgba(239, 68, 68, 0.12);
+      --accent-amber: #f59e0b;
+      --accent-amber-bg: rgba(245, 158, 11, 0.12);
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg-app);
+      color: var(--text-main);
+      line-height: 1.5;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    header {
+      background-color: var(--bg-header);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-logo {
+      width: 34px;
+      height: 34px;
+      background: linear-gradient(135deg, #10b981, #0284c7);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+    }
+
+    .brand h1 {
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+
+    .brand-badge {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      border-radius: 4px;
+      background-color: var(--accent-blue-bg);
+      color: var(--accent-blue);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      margin-left: 8px;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.15s ease;
+      font-family: inherit;
+    }
+
+    .btn-primary { background: #10b981; color: #fff; }
+    .btn-primary:hover { background: #059669; }
+    .btn-secondary { background: var(--bg-card); color: var(--text-main); border-color: var(--border-card); }
+    .btn-secondary:hover { background: var(--border-card); }
+
+    .main-layout {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+    }
+
+    /* Left Pane: Dropzone, Summary, Timeline */
+    .left-pane {
+      width: 380px;
+      min-width: 380px;
+      border-right: 1px solid var(--border-subtle);
+      background-color: var(--bg-header);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .dropzone-area {
+      padding: 16px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .dropzone {
+      border: 2px dashed var(--border-card);
+      border-radius: var(--radius-md);
+      padding: 20px 14px;
+      text-align: center;
+      background-color: rgba(255, 255, 255, 0.015);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .dropzone.dragover {
+      border-color: var(--accent-blue);
+      background-color: var(--accent-blue-bg);
+    }
+
+    .dropzone-title {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .dropzone-sub {
+      font-size: 0.74rem;
+      color: var(--text-dim);
+    }
+
+    .timeline-pane {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .pane-title {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-dim);
+      margin-bottom: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .timeline-item {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .timeline-item:hover {
+      border-color: rgba(56, 189, 248, 0.35);
+      background-color: var(--bg-card-hover);
+    }
+
+    .timeline-item.active {
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.15);
+    }
+
+    .timeline-item-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .burst-pill {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 1px 7px;
+      border-radius: 4px;
+      background: var(--accent-blue-bg);
+      color: var(--accent-blue);
+    }
+
+    .entrypoint-pill {
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 1px 6px;
+      border-radius: 4px;
+      background: var(--accent-amber-bg);
+      color: var(--accent-amber);
+    }
+
+    .timeline-time {
+      font-size: 0.72rem;
+      color: var(--text-dim);
+    }
+
+    .timeline-summary {
+      font-size: 0.84rem;
+      color: var(--text-main);
+      font-weight: 500;
+    }
+
+    /* Right Pane: Diff Viewer */
+    .right-pane {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      background-color: var(--bg-app);
+      overflow: hidden;
+    }
+
+    .diff-header-bar {
+      padding: 12px 20px;
+      background-color: var(--bg-card);
+      border-bottom: 1px solid var(--border-card);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .diff-file-tabs {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+    }
+
+    .file-tab {
+      padding: 5px 12px;
+      border-radius: var(--radius-sm);
+      background-color: var(--bg-input);
+      border: 1px solid var(--border-subtle);
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+
+    .file-tab.active {
+      background-color: var(--bg-header);
+      border-color: var(--accent-blue);
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .diff-stats {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 600;
+      display: flex;
+      gap: 8px;
+    }
+
+    .stat-add { color: var(--accent-green); background: var(--accent-green-bg); padding: 2px 6px; border-radius: 4px; }
+    .stat-del { color: var(--accent-red); background: var(--accent-red-bg); padding: 2px 6px; border-radius: 4px; }
+
+    .diff-code-view {
+      flex: 1;
+      overflow: auto;
+      background-color: var(--bg-terminal);
+      padding: 14px 0;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      line-height: 1.6;
+    }
+
+    .diff-line {
+      display: flex;
+      padding: 0 16px;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+
+    .diff-line.add { background-color: rgba(34, 197, 94, 0.14); color: #4ade80; border-left: 3px solid #22c55e; }
+    .diff-line.del { background-color: rgba(239, 68, 68, 0.14); color: #f87171; border-left: 3px solid #ef4444; }
+    .diff-line.hunk { background-color: rgba(56, 189, 248, 0.12); color: #38bdf8; font-weight: 600; border-top: 1px solid rgba(56, 189, 248, 0.2); border-bottom: 1px solid rgba(56, 189, 248, 0.2); }
+    .diff-line.header { background-color: rgba(255, 255, 255, 0.04); color: var(--text-muted); font-weight: 600; }
+
+    .empty-state {
+      padding: 40px;
+      text-align: center;
+      color: var(--text-dim);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="brand-logo">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+        </svg>
+      </div>
+      <h1>SPD Analysis Engine</h1>
+      <span class="brand-badge">Standalone Offline Viewer</span>
+    </div>
+    <div class="header-actions">
+      <input type="file" id="file-input" accept=".json,.patch,.txt" style="display: none;">
+      <button class="btn btn-secondary" id="btn-browse">Browse Session Files…</button>
+      <button class="btn btn-secondary" id="btn-demo">Load Demo Session</button>
+      <button class="btn btn-primary" id="btn-export">Export Current JSON</button>
+    </div>
+  </header>
+
+  <div class="main-layout">
+    <!-- Left Pane: Dropzone & Timeline -->
+    <div class="left-pane">
+      <div class="dropzone-area">
+        <div class="dropzone" id="dropzone">
+          <div class="dropzone-title">Drop Session Data Here</div>
+          <div class="dropzone-sub">Accepts exported session JSON or .patch files</div>
+        </div>
+      </div>
+
+      <div class="timeline-pane">
+        <div class="pane-title">
+          <span>AI Prompt Bursts</span>
+          <span id="burst-count-badge">0 events</span>
+        </div>
+        <div id="timeline-list">
+          <div class="empty-state">No session loaded yet. Drop a file or click 'Load Demo Session'.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Pane: Diff Viewer -->
+    <div class="right-pane">
+      <div class="diff-header-bar">
+        <div class="diff-file-tabs" id="diff-file-tabs">
+          <span class="file-tab active">No file selected</span>
+        </div>
+        <div class="diff-stats" id="diff-stats">
+          <span class="stat-add" id="stat-add">+0</span>
+          <span class="stat-del" id="stat-del">-0</span>
+        </div>
+      </div>
+      <div class="diff-code-view" id="diff-code-view">
+        <div class="empty-state">Select an event and file to inspect the syntax-highlighted unified diff.</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      'use strict';
+
+      // -----------------------------------------------------------------------
+      // Sample Demo Session Data (Offline Fallback)
+      // -----------------------------------------------------------------------
+      const DEMO_SESSION = {
+        project: "alpha_backend",
+        exported_at: new Date().toISOString(),
+        events: [
+          {
+            id: 1,
+            event_type: "EDIT",
+            timestamp: "2026-09-24T02:15:30Z",
+            first_file_touched: "main.py",
+            summary: "Burst edit across 3 file(s) (4.5s)",
+            patches: [
+              {
+                id: 1,
+                file_path: "main.py",
+                diff_content: "--- a/main.py\n+++ b/main.py\n@@ -1,5 +1,8 @@\n+# [BURST 1] AI Generated Imports\n+from service import AuthService\n+\n def main() -> None:\n-    print('Starting server...')\n+    auth = AuthService()\n+    print(f'Server starting with auth: {auth.realm}')\n"
+              },
+              {
+                id: 2,
+                file_path: "utils.py",
+                diff_content: "--- a/utils.py\n+++ b/utils.py\n@@ -12,3 +12,7 @@\n def compute(x: float, y: float) -> float:\n     return x + y\n+\n+def validate_token(token: str) -> bool:\n+    return len(token) >= 8\n"
+              },
+              {
+                id: 3,
+                file_path: "service.py",
+                diff_content: "--- /dev/null\n+++ b/service.py\n@@ -0,0 +1,8 @@\n+\"\"\"service.py - Authentication Service\"\"\"\n+\n+class AuthService:\n+    def __init__(self, realm: str = 'default') -> None:\n+        self.realm = realm\n+\n+    def verify(self, key: str) -> bool:\n+        return bool(key)\n"
+              }
+            ]
+          },
+          {
+            id: 2,
+            event_type: "EDIT",
+            timestamp: "2026-09-24T02:16:15Z",
+            first_file_touched: "main.py",
+            summary: "Burst edit across 1 file(s) (3.5s)",
+            patches: [
+              {
+                id: 4,
+                file_path: "main.py",
+                diff_content: "--- a/main.py\n+++ b/main.py\n@@ -8,3 +8,6 @@\n if __name__ == '__main__':\n     main()\n+\n+# [BURST 2] Added Debug Mode\n+DEBUG_MODE = True\n"
+              }
+            ]
+          }
+        ]
+      };
+
+      // State
+      let currentSession = null;
+      let selectedEventId = null;
+
+      // DOM Elements
+      const dropzone = document.getElementById('dropzone');
+      const fileInput = document.getElementById('file-input');
+      const btnBrowse = document.getElementById('btn-browse');
+      const btnDemo = document.getElementById('btn-demo');
+      const btnExport = document.getElementById('btn-export');
+      const timelineList = document.getElementById('timeline-list');
+      const burstCountBadge = document.getElementById('burst-count-badge');
+      const diffFileTabs = document.getElementById('diff-file-tabs');
+      const diffCodeView = document.getElementById('diff-code-view');
+      const statAdd = document.getElementById('stat-add');
+      const statDel = document.getElementById('stat-del');
+
+      function escapeHtml(str) {
+        if (!str) return '';
+        return String(str)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#039;');
+      }
+
+      function loadSessionData(sessionObj) {
+        currentSession = sessionObj;
+        const events = sessionObj.events || [];
+        burstCountBadge.textContent = `${events.length} events`;
+        timelineList.innerHTML = '';
+
+        if (events.length === 0) {
+          timelineList.innerHTML = '<div class="empty-state">No events found in this session.</div>';
+          diffFileTabs.innerHTML = '<span class="file-tab active">No file</span>';
+          diffCodeView.innerHTML = '<div class="empty-state">No diffs to display.</div>';
+          return;
+        }
+
+        events.forEach((ev, idx) => {
+          const item = document.createElement('div');
+          item.className = `timeline-item ${idx === 0 ? 'active' : ''}`;
+          item.dataset.eventId = ev.id;
+
+          const entrypoint = ev.first_file_touched || (ev.patches && ev.patches[0] ? ev.patches[0].file_path : 'edit');
+          const patchCount = ev.patches ? ev.patches.length : 0;
+
+          item.innerHTML = `
+            <div class="timeline-item-header">
+              <span class="burst-pill">Burst #${ev.id}</span>
+              <span class="entrypoint-pill">${escapeHtml(entrypoint)}</span>
+              <span class="timeline-time">${escapeHtml(ev.timestamp ? ev.timestamp.slice(11, 19) : '')}</span>
+            </div>
+            <div class="timeline-summary">${escapeHtml(ev.summary || '')} (${patchCount} files)</div>
+          `;
+
+          item.addEventListener('click', () => {
+            document.querySelectorAll('.timeline-item').forEach(el => el.classList.remove('active'));
+            item.classList.add('active');
+            renderEventDiffs(ev);
+          });
+
+          timelineList.appendChild(item);
+        });
+
+        // Render first event by default
+        renderEventDiffs(events[0]);
+      }
+
+      function renderEventDiffs(eventObj) {
+        selectedEventId = eventObj.id;
+        const patches = eventObj.patches || [];
+        diffFileTabs.innerHTML = '';
+
+        if (patches.length === 0) {
+          diffFileTabs.innerHTML = '<span class="file-tab active">No patches</span>';
+          diffCodeView.innerHTML = '<div class="empty-state">No file diffs recorded for this burst.</div>';
+          statAdd.textContent = '+0';
+          statDel.textContent = '-0';
+          return;
+        }
+
+        patches.forEach((p, idx) => {
+          const tab = document.createElement('span');
+          tab.className = `file-tab ${idx === 0 ? 'active' : ''}`;
+          tab.textContent = p.file_path;
+          tab.addEventListener('click', () => {
+            document.querySelectorAll('.file-tab').forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            renderDiffText(p.diff_content);
+          });
+          diffFileTabs.appendChild(tab);
+        });
+
+        renderDiffText(patches[0].diff_content);
+      }
+
+      function renderDiffText(diffStr) {
+        if (!diffStr || !diffStr.trim()) {
+          diffCodeView.innerHTML = '<div class="empty-state">No text diff content recorded.</div>';
+          statAdd.textContent = '+0';
+          statDel.textContent = '-0';
+          return;
+        }
+
+        let additions = 0;
+        let deletions = 0;
+        const lines = diffStr.split('\n');
+        const fragment = document.createDocumentFragment();
+
+        lines.forEach(line => {
+          const div = document.createElement('div');
+          div.className = 'diff-line';
+
+          if (line.startsWith('---') || line.startsWith('+++')) {
+            div.className += ' header';
+            div.textContent = line;
+          } else if (line.startsWith('@@')) {
+            div.className += ' hunk';
+            div.textContent = line;
+          } else if (line.startsWith('+')) {
+            additions++;
+            div.className += ' add';
+            div.textContent = line;
+          } else if (line.startsWith('-')) {
+            deletions++;
+            div.className += ' del';
+            div.textContent = line;
+          } else {
+            div.textContent = line;
+          }
+          fragment.appendChild(div);
+        });
+
+        statAdd.textContent = `+${additions}`;
+        statDel.textContent = `-${deletions}`;
+        diffCodeView.innerHTML = '';
+        diffCodeView.appendChild(fragment);
+      }
+
+      // Drag and Drop Handling
+      dropzone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        dropzone.classList.add('dragover');
+      });
+
+      dropzone.addEventListener('dragleave', () => {
+        dropzone.classList.remove('dragover');
+      });
+
+      dropzone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dropzone.classList.remove('dragover');
+        if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+          processFile(e.dataTransfer.files[0]);
+        }
+      });
+
+      dropzone.addEventListener('click', () => fileInput.click());
+      btnBrowse.addEventListener('click', () => fileInput.click());
+
+      fileInput.addEventListener('change', (e) => {
+        if (e.target.files && e.target.files.length > 0) {
+          processFile(e.target.files[0]);
+        }
+      });
+
+      function processFile(file) {
+        const reader = new FileReader();
+        reader.onload = function(evt) {
+          const content = evt.target.result;
+          if (file.name.endsWith('.json')) {
+            try {
+              const parsed = JSON.parse(content);
+              loadSessionData(parsed);
+            } catch (err) {
+              alert('Could not parse JSON file: ' + err.message);
+            }
+          } else {
+            // Raw patch or text file
+            const syntheticSession = {
+              project: file.name.replace(/\.[^/.]+$/, ""),
+              exported_at: new Date().toISOString(),
+              events: [
+                {
+                  id: 1,
+                  event_type: "EDIT",
+                  timestamp: new Date().toISOString(),
+                  first_file_touched: file.name,
+                  summary: `Loaded from patch file: ${file.name}`,
+                  patches: [
+                    {
+                      id: 1,
+                      file_path: file.name,
+                      diff_content: content
+                    }
+                  ]
+                }
+              ]
+            };
+            loadSessionData(syntheticSession);
+          }
+        };
+        reader.readAsText(file);
+      }
+
+      // Demo and Export buttons
+      btnDemo.addEventListener('click', () => loadSessionData(DEMO_SESSION));
+
+      btnExport.addEventListener('click', () => {
+        if (!currentSession) {
+          alert('No session loaded to export.');
+          return;
+        }
+        const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(currentSession, null, 2));
+        const dlAnchor = document.createElement('a');
+        dlAnchor.setAttribute("href", dataStr);
+        dlAnchor.setAttribute("download", `spd_export_${currentSession.project || 'session'}.json`);
+        document.body.appendChild(dlAnchor);
+        dlAnchor.click();
+        dlAnchor.remove();
+      });
+
+      // Automatically load demo session on startup so dashboard looks active immediately
+      loadSessionData(DEMO_SESSION);
+    })();
+  </script>
+</body>
+</html>

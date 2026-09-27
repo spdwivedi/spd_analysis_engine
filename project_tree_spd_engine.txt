@@ -1,0 +1,731 @@
+spd_analysis_engine/
+├── __pycache__
+│   ├── __init__.cpython-313.pyc
+│   ├── __init__.cpython-314.pyc
+│   └── start.cpython-313.pyc
+├── _backup_monoliths
+│   ├── ai_analyzer.py
+│   ├── app.js
+│   ├── git_shadow.py
+│   ├── storage_rotator.py
+│   ├── style.css
+│   └── web_server.py
+├── ai_data
+│   ├── cache
+│   │   ├── aether_strike
+│   │   │   ├── files
+│   │   │   │   ├── file_analysis_1_1_index.html_5087394c0245e9d3.json
+│   │   │   │   ├── file_analysis_1_1_package.json_34095c45e1e047e8.json
+│   │   │   │   ├── file_analysis_1_1_src_core_event_bus.js_cf8e52ce45c4e141.json
+│   │   │   │   ├── file_analysis_1_1_src_core_loop.js_10e4062674da5956.json
+│   │   │   │   ├── file_analysis_1_1_src_core_vector2d.js_45afb314cee1dafa.json
+│   │   │   │   ├── file_analysis_1_1_src_core_viewport.js_cf5b66cb27933d21.json
+│   │   │   │   ├── file_analysis_1_1_src_ecs_components.js_252c22ec048b147d.json
+│   │   │   │   ├── file_analysis_1_1_src_ecs_entity.js_6dc60d7195a2b892.json
+│   │   │   │   ├── file_analysis_1_1_src_ecs_systems.js_177e4eeb1236f836.json
+│   │   │   │   ├── file_analysis_1_1_src_ecs_world.js_51e6ea6d0ac41130.json
+│   │   │   │   ├── file_analysis_1_1_src_main.js_aa5c2f5a460c235b.json
+│   │   │   │   ├── file_analysis_1_1_tests_engine.test.js_ee5e47413694b143.json
+│   │   │   │   ├── file_analysis_1_2_CHANGELOG.md_7f81ef38b29a884d.json
+│   │   │   │   ├── file_analysis_1_3_index.html_5087394c0245e9d3.json
+│   │   │   │   ├── file_analysis_1_3_package.json_34095c45e1e047e8.json
+│   │   │   │   ├── file_analysis_1_3_src_core_event_bus.js_cf8e52ce45c4e141.json
+│   │   │   │   ├── file_analysis_1_3_src_core_loop.js_10e4062674da5956.json
+│   │   │   │   ├── file_analysis_1_3_src_core_vector2d.js_45afb314cee1dafa.json
+│   │   │   │   ├── file_analysis_1_3_src_core_viewport.js_cf5b66cb27933d21.json
+│   │   │   │   ├── file_analysis_1_3_src_ecs_components.js_252c22ec048b147d.json
+│   │   │   │   ├── file_analysis_1_3_src_ecs_entity.js_6dc60d7195a2b892.json
+│   │   │   │   ├── file_analysis_1_3_src_ecs_systems.js_177e4eeb1236f836.json
+│   │   │   │   ├── file_analysis_1_3_src_ecs_world.js_51e6ea6d0ac41130.json
+│   │   │   │   ├── file_analysis_1_3_src_main.js_aa5c2f5a460c235b.json
+│   │   │   │   ├── file_analysis_1_3_tests_engine.test.js_ee5e47413694b143.json
+│   │   │   │   └── file_analysis_1_9_CHANGELOG.md_7f81ef38b29a884d.json
+│   │   │   ├── overviews
+│   │   │   │   ├── burst_overview_1_1_e40c2f82863f5a03.json
+│   │   │   │   └── burst_overview_1_3_e40c2f82863f5a03.json
+│   │   │   └── session_1
+│   │   │       ├── burst_1_e8177f2b41394b9d.json
+│   │   │       ├── burst_1_overview_3_e40c2.json
+│   │   │       └── burst_1_overview_9_7f81e.json
+│   │   ├── nova_pulse
+│   │   │   ├── commands
+│   │   │   │   └── cmd_63e70027ae869684.json
+│   │   │   ├── files
+│   │   │   │   ├── file_analysis_1_48_index.html_c155ab42b033f56f.json
+│   │   │   │   └── file_analysis_1_6_index.html_c155ab42b033f56f.json
+│   │   │   ├── overviews
+│   │   │   │   ├── burst_overview_1_48_5e5df4bc94dab6f4.json
+│   │   │   │   └── burst_overview_1_6_5e5df4bc94dab6f4.json
+│   │   │   └── session_1
+│   │   │       ├── burst_12_503e5b9c868477ef.json
+│   │   │       ├── burst_16_55b6649cd4d81a57.json
+│   │   │       ├── burst_1_e1ffa032e86cf9a4.json
+│   │   │       ├── burst_25_75f0ed0d71dd06b1.json
+│   │   │       ├── burst_33_0f5de5bacc5b9d11.json
+│   │   │       └── burst_41_414962c75ab10ef4.json
+│   │   ├── .gitkeep
+│   │   ├── 0df36b37322c9489555e6f6be85d43e1b827701a436e68c109106423b1e9a17b.json
+│   │   ├── 0e161565023a2946044457273b1a837ef327f9595fd8913a8da595a6a980a11c.json
+│   │   ├── 16f00a17af3396b027acc38e41fdf5b1846af7dbecb329ceae5268b418cbc0f8.json
+│   │   ├── 1890c32b2394152e3fe648c679de36d4d8582ed4118f06c57ee92bf0c0f42e0a.json
+│   │   ├── 203ca0855a81f9f3cf0da288532160bae5c1727e486def35abae7c87ee5aa0ae.json
+│   │   ├── 243ff152af383ee767664a3aa6ba7674df8674e06fbcb491d2e89a0f915d7d59.json
+│   │   ├── 2e876216a5d085a30485a131563d8d770a06c5160f5ead9badf80245c9c1b47d.json
+│   │   ├── 318458f8d826d28aad69980a66b94085367b24f0c6cb137217e28f66f3be94cb.json
+│   │   ├── 32ce3563ae2fd87b919dba199bfdf1581580e1839876074c32b1a8879ca3a790.json
+│   │   ├── 3aa5383b52e775a6160da409701c545f2c8874d68ce7674dec8e34ebb8841a67.json
+│   │   ├── 3e28430862bea290a5adfd49ad4a08f960b38c7ce1502b757014f9202e3f4ebb.json
+│   │   ├── 52cd505ba6ab1c7f2c32acc9ad3b508758b4f7f53b66168845095dbf8e64d4f5.json
+│   │   ├── 661bf768e969b654cec62d04b2efef95528dad30cb3b2167c6683f4698ffb8b9.json
+│   │   ├── 6658073c3d51b19664c96be03926ee1fd774458212ca5668210fe4145897c56e.json
+│   │   ├── 6933823680c9008c7590fa5a137337d45fc90b58b85f4e5a78016a8be16ecd5b.json
+│   │   ├── 6a6cd221ee6dc5d5363fa8ab36c9e98c30b69c1aee2a5337d4a68e8df9a6ea87.json
+│   │   ├── 6ce40708fea3666ec7cbac8ed67b5432cd0413c764e230f104ea08b9d0e9cb0a.json
+│   │   ├── 70756eb3f1f1756bffed7b8d9d22b4f42cf81fdee37201b3cc038470326b0557.json
+│   │   ├── 75030a4d1350960c5646406009e415bc08cfbf5ca435fe4d9dc61244ae97e08e.json
+│   │   ├── 76784ee701bff99e0e5f4e207ea9e7bbc4c6149646279e0e5b926c8972213429.json
+│   │   ├── 7a19761b66981dbe2c89eced57154def5899584df028ab277a7c2ecb08152a1f.json
+│   │   ├── 83ee28da1f35b3c31a87188f653865ebede9d0dda36c988b1f73d1d0310d494c.json
+│   │   ├── 88dc123a0d26988d40aaf560185fb16439abdfbfde77c32f32c9880a83d0b3b2.json
+│   │   ├── 8fca6b13199b9882fb9d88fa5e26b3570ace6dbebb16bc3ad8670aca2af0c795.json
+│   │   ├── 99895869413d64af96a801886e0758b98e2be29109eacc9537d8e694c0a22337.json
+│   │   ├── 9baa46711b75f58ea314c632852fc091266ce3e907b8aa7d78f1aa0296fc2859.json
+│   │   ├── a35b595106707c174d28cf94fc1305634dadcc17653b77ade5e27f187944bded.json
+│   │   ├── a78258e1f4cff2b56d2077ed158dcb4a17e8d58df4222b0f0a9a671f1c4313be.json
+│   │   ├── ac491c095a38b846684062a1909a345120e1f101c6d196d7ecad82626c86b364.json
+│   │   ├── adc589f412a9017828042c85c85457ba04a7a93c2f57a737821e34e539d8a895.json
+│   │   ├── b2b1bc60e97d14d7460b56d3c183e041254f37f3d3bcc226f990844ed859cf49.json
+│   │   ├── b49abe5f37beaa803106fb08ecd82403174ef5d8c02455d0cdd319def53727dd.json
+│   │   ├── ba54a89598fdf23362efa931ab906490e8831c9aebe57a5529e9e4e8d1b9629d.json
+│   │   ├── burst_overview_1_1_e40c2f82863f5a03.json
+│   │   ├── burst_overview_1_3_e40c2f82863f5a03.json
+│   │   ├── burst_overview_1_48_5e5df4bc94dab6f4.json
+│   │   ├── burst_overview_1_6_5e5df4bc94dab6f4.json
+│   │   ├── c08efde0414edd3c979ed4620a646d730e274b2268629f43289ce20c6f656a2e.json
+│   │   ├── c193b7a8c744ad07660df19dc460fe3cb0c19a12e72390a400c915906d9d144b.json
+│   │   ├── c19ba55183c35c4a1e1d19268c01a7f83040f30886d6b6a6a6d1d30a5e888ca0.json
+│   │   ├── e3068e0865c8382761da22c66a76c99648a253bb24b2313d33eeb0d7238aec65.json
+│   │   ├── f658e749ab570baaa3b1e1a068181a060be128480f1ed06964bf80eb8684beae.json
+│   │   ├── f6bc0e8ff3995036b625118901be56706c55e80009b3a73f24008db0c8be1ab3.json
+│   │   ├── f84f74951743c3a30254b22ba9941aebce085780c1261c00205b180921d369c6.json
+│   │   ├── file_analysis_1_1_index.html_5087394c0245e9d3.json
+│   │   ├── file_analysis_1_1_package.json_34095c45e1e047e8.json
+│   │   ├── file_analysis_1_1_src_core_event_bus.js_cf8e52ce45c4e141.json
+│   │   ├── file_analysis_1_1_src_core_loop.js_10e4062674da5956.json
+│   │   ├── file_analysis_1_1_src_core_vector2d.js_45afb314cee1dafa.json
+│   │   ├── file_analysis_1_1_src_core_viewport.js_cf5b66cb27933d21.json
+│   │   ├── file_analysis_1_1_src_ecs_components.js_252c22ec048b147d.json
+│   │   ├── file_analysis_1_1_src_ecs_entity.js_6dc60d7195a2b892.json
+│   │   ├── file_analysis_1_1_src_ecs_systems.js_177e4eeb1236f836.json
+│   │   ├── file_analysis_1_1_src_ecs_world.js_51e6ea6d0ac41130.json
+│   │   ├── file_analysis_1_1_src_main.js_aa5c2f5a460c235b.json
+│   │   ├── file_analysis_1_1_tests_engine.test.js_ee5e47413694b143.json
+│   │   ├── file_analysis_1_2_CHANGELOG.md_7f81ef38b29a884d.json
+│   │   ├── file_analysis_1_3_index.html_5087394c0245e9d3.json
+│   │   ├── file_analysis_1_3_package.json_34095c45e1e047e8.json
+│   │   ├── file_analysis_1_3_src_core_event_bus.js_cf8e52ce45c4e141.json
+│   │   ├── file_analysis_1_3_src_core_loop.js_10e4062674da5956.json
+│   │   ├── file_analysis_1_3_src_core_vector2d.js_45afb314cee1dafa.json
+│   │   ├── file_analysis_1_3_src_core_viewport.js_cf5b66cb27933d21.json
+│   │   ├── file_analysis_1_3_src_ecs_components.js_252c22ec048b147d.json
+│   │   ├── file_analysis_1_3_src_ecs_entity.js_6dc60d7195a2b892.json
+│   │   ├── file_analysis_1_3_src_ecs_systems.js_177e4eeb1236f836.json
+│   │   ├── file_analysis_1_3_src_ecs_world.js_51e6ea6d0ac41130.json
+│   │   ├── file_analysis_1_3_src_main.js_aa5c2f5a460c235b.json
+│   │   ├── file_analysis_1_3_tests_engine.test.js_ee5e47413694b143.json
+│   │   ├── file_analysis_1_48_index.html_c155ab42b033f56f.json
+│   │   ├── file_analysis_1_6_index.html_c155ab42b033f56f.json
+│   │   ├── file_analysis_1_9_CHANGELOG.md_7f81ef38b29a884d.json
+│   │   ├── session_1d4646df31ba9c68acab550517f6d205a2a5333e088bf08cf3b319dc5e011d39.json
+│   │   ├── session_30202693f8d56cc5c676c033c05a7550d2f5521a45237bf84dfa2a32bc83847f.json
+│   │   ├── session_753fe376628681234bec030c4627e2c3baab9cbde5bdc11f6d8f7c89e32bf680.json
+│   │   ├── session_847f9247247e0844ab7b3611700ddee584e52e695cc097d65cc64162307d5bc2.json
+│   │   ├── session_c6aaf87a0fd68bb5942d076744a45e87e788b3f9bac913272f9b0ee2fd35f841.json
+│   │   └── session_e61009cabff1f2220e6d2b979e60c4715ec2bc40706d8c029861565a79798c46.json
+│   ├── .gitkeep
+│   ├── git_config.example.json
+│   ├── git_config.json
+│   ├── models_config.example.json
+│   └── models_config.json
+├── current
+├── history
+│   └── .gitkeep
+├── last_run
+│   └── nova_pulse
+│       ├── baseline
+│       │   ├── src
+│       │   │   ├── ai
+│       │   │   │   ├── behaviors.js
+│       │   │   │   ├── steering.js
+│       │   │   │   └── wave_director.js
+│       │   │   ├── audio
+│       │   │   │   └── sound_synth.js
+│       │   │   ├── combat
+│       │   │   │   ├── projectile_pool.js
+│       │   │   │   └── weapons.js
+│       │   │   ├── core
+│       │   │   │   ├── events.js
+│       │   │   │   ├── loop.js
+│       │   │   │   ├── math.js
+│       │   │   │   └── viewport.js
+│       │   │   ├── ecs
+│       │   │   │   ├── components.js
+│       │   │   │   ├── entity.js
+│       │   │   │   ├── systems.js
+│       │   │   │   └── world.js
+│       │   │   ├── environment
+│       │   │   │   └── arena.js
+│       │   │   ├── fx
+│       │   │   │   └── particle_pool.js
+│       │   │   ├── physics
+│       │   │   │   ├── colliders.js
+│       │   │   │   ├── narrowphase.js
+│       │   │   │   ├── resolver.js
+│       │   │   │   └── spatial_hash.js
+│       │   │   └── main.js
+│       │   ├── tests
+│       │   │   ├── scratch
+│       │   │   │   └── debug_resolver.js
+│       │   │   └── engine.test.js
+│       │   ├── .gitignore
+│       │   ├── CHANGELOG.md
+│       │   ├── index.html
+│       │   ├── package.json
+│       │   └── server.js
+│       ├── patches
+│       │   ├── event_10.patch
+│       │   ├── event_16.patch
+│       │   ├── event_25.patch
+│       │   ├── event_33.patch
+│       │   ├── event_41.patch
+│       │   └── event_48.patch
+│       ├── shadow_git
+│       │   ├── hooks
+│       │   │   ├── applypatch-msg.sample
+│       │   │   ├── commit-msg.sample
+│       │   │   ├── fsmonitor-watchman.sample
+│       │   │   ├── post-update.sample
+│       │   │   ├── pre-applypatch.sample
+│       │   │   ├── pre-commit.sample
+│       │   │   ├── pre-merge-commit.sample
+│       │   │   ├── pre-push.sample
+│       │   │   ├── pre-rebase.sample
+│       │   │   ├── pre-receive.sample
+│       │   │   ├── prepare-commit-msg.sample
+│       │   │   ├── push-to-checkout.sample
+│       │   │   ├── sendemail-validate.sample
+│       │   │   └── update.sample
+│       │   ├── info
+│       │   │   └── exclude
+│       │   ├── logs
+│       │   │   ├── refs
+│       │   │   │   └── heads
+│       │   │   │       └── main
+│       │   │   └── HEAD
+│       │   ├── objects
+│       │   │   ├── 04
+│       │   │   │   └── ad55a05548c464c347d4b1b57969761cf098d0
+│       │   │   ├── 06
+│       │   │   │   └── 22fb697c37acc4bdc2bff6840eb334767fe466
+│       │   │   ├── 07
+│       │   │   │   └── ae5dd15d9c7107076a9bb6b37a33866b41d4d4
+│       │   │   ├── 0a
+│       │   │   │   └── 7023ee71698b94134d56465677d8601b82388b
+│       │   │   ├── 0b
+│       │   │   │   └── bb3f46d54d1ce6da5e854b78b14a57b8bf1fa8
+│       │   │   ├── 0c
+│       │   │   │   └── e0e223a5efcfa6863944dc921d6754a7034683
+│       │   │   ├── 0d
+│       │   │   │   └── 44580915255eac4d979dce16a95367659c4f1b
+│       │   │   ├── 0f
+│       │   │   │   └── a90813546ba553d0bd57fb583120aa88e6cd90
+│       │   │   ├── 11
+│       │   │   │   └── 2003cd3d876d5c1467c7580b50910a670eb455
+│       │   │   ├── 12
+│       │   │   │   ├── 81dd735b5099d0dfce69993ff2d556593709f6
+│       │   │   │   └── 9d7934e900b21f1ec50359ed69aba876e9d0a3
+│       │   │   ├── 19
+│       │   │   │   └── d5274f5fb9c66333e4bd9f81e0ac66de4817c6
+│       │   │   ├── 1a
+│       │   │   │   └── 4c2f71d33efe7c94d760d1c0d524ad95c57ba3
+│       │   │   ├── 1d
+│       │   │   │   └── 7a28b97001fa669839ea6130ee5d8e7cf99106
+│       │   │   ├── 29
+│       │   │   │   └── bf08813ddfe06becb3c0ad5fe949420aadb96c
+│       │   │   ├── 33
+│       │   │   │   └── 1253f1d7c6cc5ed5f9d1929b9535a2a82aee34
+│       │   │   ├── 34
+│       │   │   │   └── fe51ef7452dc1c7a6143373f8271c852f08f13
+│       │   │   ├── 36
+│       │   │   │   └── e82368cfbe3b4e56ec15accc9439b2a055f8a5
+│       │   │   ├── 38
+│       │   │   │   └── 81f5d953c842d3b10fce1ce0afa73c3a9f807c
+│       │   │   ├── 3a
+│       │   │   │   └── fbd7ad250242d6efa5926e9778e5657703de1f
+│       │   │   ├── 3b
+│       │   │   │   ├── 85fcc87a764d1adb8f9293b0ab0e22abf3ead0
+│       │   │   │   └── 965328d4dbc8378ef5a843c6559b1609b8d1dd
+│       │   │   ├── 3d
+│       │   │   │   └── 73664fdf41a88476a366f7849ff7440be3497b
+│       │   │   ├── 3f
+│       │   │   │   ├── a36028e2f52afc8e8de1b34d0e9983307f94cd
+│       │   │   │   └── a5e155461d1723d8db64857fc013f017e962e0
+│       │   │   ├── 47
+│       │   │   │   └── 5aaa39b6db09674bfd55a1b8a438b8e2241743
+│       │   │   ├── 4c
+│       │   │   │   └── 4436979bcf79cc1b5cadb2ebd31c3616e0c73d
+│       │   │   ├── 53
+│       │   │   │   └── 7fc42635dc74b24707acd48850990a069f2365
+│       │   │   ├── 54
+│       │   │   │   └── 0fa99594d3d4c8b563fc8cb93ecf6a741cc6ab
+│       │   │   ├── 56
+│       │   │   │   └── c4490abbb4e6e16de04ee8f73707df746abc54
+│       │   │   ├── 58
+│       │   │   │   └── 6a1ec4fc383dae5def8b537d925a577dc55f4a
+│       │   │   ├── 59
+│       │   │   │   └── ded5d8b71abad23d8f7f322d907e6f6753b443
+│       │   │   ├── 5c
+│       │   │   │   └── e46cdb4927b3af0594329983747e532f57d04c
+│       │   │   ├── 61
+│       │   │   │   ├── 042e20561d63ac6fa4aa3f8e60ea800d5b8b63
+│       │   │   │   └── 2242880fa598d9149a368484db6e03776777b3
+│       │   │   ├── 63
+│       │   │   │   ├── 071928f9460d76d58bd973e4b2359972c1823d
+│       │   │   │   └── 102c5f690bc70348a1c181c87c20cc03d11672
+│       │   │   ├── 64
+│       │   │   │   └── af653dcf927f226237d899d8cddfa6dc8ffde9
+│       │   │   ├── 73
+│       │   │   │   └── 049392727221a3402af57b24a419d1d9fb8ae2
+│       │   │   ├── 74
+│       │   │   │   └── 6ebbe76564d7b487270b9263b321839bb410b1
+│       │   │   ├── 75
+│       │   │   │   └── 2f6505d708ec6ef4129fcc355e2ea0615e57c7
+│       │   │   ├── 79
+│       │   │   │   ├── 9e9c6858e2c49c97b3f41092dd84a37733167b
+│       │   │   │   └── dc32b0c2f4985c04a5668c0b4ef9d61bff3bd2
+│       │   │   ├── 7a
+│       │   │   │   └── 5502203833ba199cd9456947b862e12ed6f44e
+│       │   │   ├── 7b
+│       │   │   │   └── 7e52e0cef17d198611c866ed6c4f8f0e353069
+│       │   │   ├── 7c
+│       │   │   │   └── 3e77432cc256e2ff2ac7a92cf520495a77a0af
+│       │   │   ├── 7d
+│       │   │   │   └── cae80ae10f79f83f30d5528d72fc167fbe8236
+│       │   │   ├── 83
+│       │   │   │   └── 8820e3ca435fbabda55abf44984229f9c5af1c
+│       │   │   ├── 88
+│       │   │   │   └── c35e7982c962a97420fcb556516b8531580ac9
+│       │   │   ├── 8f
+│       │   │   │   └── 24254b869e8e4b8088d1361b21a2353b7efe46
+│       │   │   ├── 90
+│       │   │   │   ├── 39d4b988f0de78c48a5a694e97b0a5426d5d2d
+│       │   │   │   └── ff05ca503e533e1bff6f79183bde1eaae98029
+│       │   │   ├── 92
+│       │   │   │   └── 10800b9eb4d181935ad92b79a40f9494cedfba
+│       │   │   ├── 96
+│       │   │   │   └── b303c89579827f0b37dc83be0120b0cd5d60d3
+│       │   │   ├── 9b
+│       │   │   │   ├── 953aecbd0ff9c2d539b12a1662c71ebc732647
+│       │   │   │   └── d697976b3d65a289aaa49e0197e7737f1c8263
+│       │   │   ├── 9c
+│       │   │   │   └── 6771496e081f4435d91c5c99e0d92fdc203fd4
+│       │   │   ├── 9d
+│       │   │   │   └── 277a570c5447036f72791a0e47468027608b13
+│       │   │   ├── 9e
+│       │   │   │   ├── 97aa961dbf8cb5c064e5f691565c754e7ece5f
+│       │   │   │   └── a2aab4c54064dcf2dcaff23ab6ff0b6e66eb8c
+│       │   │   ├── a3
+│       │   │   │   └── 90c7521c42dee280c88bddf8547dfb8ae3a5e7
+│       │   │   ├── a4
+│       │   │   │   ├── 065ba46e8927f81f71ef4face3ea46b01156fe
+│       │   │   │   ├── 4a74fbca232f78ffec9a7d5a3af5ac180cfa36
+│       │   │   │   └── 7f5e5f674c2c33df593f709e44cb5eeb668f44
+│       │   │   ├── a5
+│       │   │   │   └── 2f38eb54ee13db2074a57bdc5c5e06a1d5aba1
+│       │   │   ├── a9
+│       │   │   │   └── aea3cb6ae3d5f1453ffd13f7e6a9d0e5606430
+│       │   │   ├── ad
+│       │   │   │   └── 902c7adc455ba26fa6467e2226444b4a31bfc3
+│       │   │   ├── af
+│       │   │   │   └── 90b1b1d88232c8a55deaf5c511163001318e76
+│       │   │   ├── b0
+│       │   │   │   ├── 608f8ff19300e24d6e86bdce19428361a1cb07
+│       │   │   │   └── b675bc397611437524dadd1f9283e64147a08f
+│       │   │   ├── b8
+│       │   │   │   └── aaf91a393c626b102758f7666895d7ce2f4afe
+│       │   │   ├── bc
+│       │   │   │   └── 762b0c6969e508cafaf7dbd5e437cfdc67d348
+│       │   │   ├── c0
+│       │   │   │   ├── 0069549af15b1284b8550d936212065eef1d1c
+│       │   │   │   └── 59bf3a6b65551819215257bdce72409130a8d7
+│       │   │   ├── c3
+│       │   │   │   └── ae2bd1e1aebf14ec1e6aa89f2266741e6be729
+│       │   │   ├── c5
+│       │   │   │   └── 9b9e5029c27c7a2740608f2d9b7c752980af81
+│       │   │   ├── c8
+│       │   │   │   ├── 2d3181969e7889964b860fd543a46b6bcb4ff2
+│       │   │   │   └── 35ebdeb53034988fbe672725937711b4c5f2db
+│       │   │   ├── c9
+│       │   │   │   └── 83f00e57a3dd3e21dc0230c2918b65f8ff908c
+│       │   │   ├── cb
+│       │   │   │   └── 04dd04ba057651452d018d95080d26ff111350
+│       │   │   ├── cd
+│       │   │   │   └── 4074d7fbbf193740d01cf7b1ca28f1f33d72a4
+│       │   │   ├── da
+│       │   │   │   └── 91301508b1a9d77465e89a5751d959f71ad134
+│       │   │   ├── de
+│       │   │   │   └── 164b7e4f23bd5a5d7b9b6fc3eb3f69b9a5701f
+│       │   │   ├── e2
+│       │   │   │   └── ffbaaa1536461ae5f87d2dc6cc15ab0e6c6b57
+│       │   │   ├── ea
+│       │   │   │   └── f76ad87bd9c9bf2c20751015fbda6fd14a6932
+│       │   │   ├── f1
+│       │   │   │   └── 64af8d675a48c4d00a12ca88e2c10695f14368
+│       │   │   ├── f2
+│       │   │   │   └── a69b1a92a4e5feb7b8e24739a03328db943389
+│       │   │   ├── f4
+│       │   │   │   └── e34d95c1b65a7ae5b0c210b0c34fce4f162b6c
+│       │   │   ├── f5
+│       │   │   │   └── b57c43ad787d23dcb661d0683f4daa6ef16293
+│       │   │   ├── f7
+│       │   │   │   └── 6928c25d58f4dcff3282388ccf5dde744d7c9c
+│       │   │   ├── f8
+│       │   │   │   └── 7510e777a3bf40ddf6bcd04e59d82f66010ba3
+│       │   │   ├── f9
+│       │   │   │   └── 28a40056dc798d12e1abf3e710fb0f79bb9818
+│       │   │   ├── fe
+│       │   │   │   ├── 0085ed89cb36552916bbaa2f76a0359454d7fc
+│       │   │   │   └── a4177b37d0e0d0b909f8b0a6d7445c91b90fc3
+│       │   │   ├── info
+│       │   │   └── pack
+│       │   ├── refs
+│       │   │   ├── heads
+│       │   │   │   └── main
+│       │   │   └── tags
+│       │   ├── COMMIT_EDITMSG
+│       │   ├── config
+│       │   ├── description
+│       │   ├── HEAD
+│       │   └── index
+│       ├── project.meta
+│       ├── session.db
+│       ├── session.db-shm
+│       ├── session.db-wal
+│       ├── session.lock
+│       ├── worker.log
+│       ├── worker.pid.stale
+│       └── worker.status.json
+├── scripts
+│   ├── __pycache__
+│   │   ├── __init__.cpython-313.pyc
+│   │   ├── __init__.cpython-314.pyc
+│   │   ├── ai_analyzer.cpython-313.pyc
+│   │   ├── ai_analyzer.cpython-314.pyc
+│   │   ├── diff_calc.cpython-313.pyc
+│   │   ├── diff_calc.cpython-314.pyc
+│   │   ├── event_bundler.cpython-313.pyc
+│   │   ├── event_bundler.cpython-314.pyc
+│   │   ├── git_shadow.cpython-313.pyc
+│   │   ├── git_shadow.cpython-314.pyc
+│   │   ├── ide_profiles.cpython-313.pyc
+│   │   ├── ide_profiles.cpython-314.pyc
+│   │   ├── orchestrator.cpython-313.pyc
+│   │   ├── orchestrator.cpython-314.pyc
+│   │   ├── project_worker.cpython-313.pyc
+│   │   ├── shell_interceptor.cpython-313.pyc
+│   │   ├── shell_interceptor.cpython-314.pyc
+│   │   ├── storage_rotator.cpython-313.pyc
+│   │   ├── storage_rotator.cpython-314.pyc
+│   │   ├── trash_manager.cpython-313.pyc
+│   │   ├── trash_manager.cpython-314.pyc
+│   │   ├── watcher_fs.cpython-313.pyc
+│   │   ├── watcher_fs.cpython-314.pyc
+│   │   ├── watcher_proc.cpython-313.pyc
+│   │   ├── watcher_proc.cpython-314.pyc
+│   │   ├── web_server.cpython-313.pyc
+│   │   ├── web_server.cpython-314.pyc
+│   │   └── web_server_test.cpython-313.pyc
+│   ├── ai
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-313.pyc
+│   │   │   ├── __init__.cpython-314.pyc
+│   │   │   ├── cache_manager.cpython-313.pyc
+│   │   │   ├── cache_manager.cpython-314.pyc
+│   │   │   ├── cache_queries.cpython-313.pyc
+│   │   │   ├── cache_queries.cpython-314.pyc
+│   │   │   ├── changelog.cpython-313.pyc
+│   │   │   ├── changelog.cpython-314.pyc
+│   │   │   ├── command_explainer.cpython-313.pyc
+│   │   │   ├── command_explainer.cpython-314.pyc
+│   │   │   ├── config.cpython-313.pyc
+│   │   │   ├── config.cpython-314.pyc
+│   │   │   ├── prompt_builder.cpython-313.pyc
+│   │   │   ├── prompt_builder.cpython-314.pyc
+│   │   │   ├── provider_gemini.cpython-313.pyc
+│   │   │   ├── provider_gemini.cpython-314.pyc
+│   │   │   ├── provider_ollama.cpython-313.pyc
+│   │   │   ├── provider_ollama.cpython-314.pyc
+│   │   │   ├── rate_limiter.cpython-313.pyc
+│   │   │   ├── rate_limiter.cpython-314.pyc
+│   │   │   ├── synthesizer.cpython-313.pyc
+│   │   │   ├── synthesizer.cpython-314.pyc
+│   │   │   ├── synthesizer_burst.cpython-313.pyc
+│   │   │   ├── synthesizer_burst.cpython-314.pyc
+│   │   │   ├── synthesizer_file.cpython-313.pyc
+│   │   │   └── synthesizer_file.cpython-314.pyc
+│   │   ├── __init__.py
+│   │   ├── cache_manager.py
+│   │   ├── cache_queries.py
+│   │   ├── changelog.py
+│   │   ├── command_explainer.py
+│   │   ├── config.py
+│   │   ├── create_synthesizer_mixins.py
+│   │   ├── prompt_builder.py
+│   │   ├── provider_gemini.py
+│   │   ├── provider_ollama.py
+│   │   ├── rate_limiter.py
+│   │   ├── slim_synthesizer.py
+│   │   ├── synthesizer.py
+│   │   ├── synthesizer_burst.py
+│   │   └── synthesizer_file.py
+│   ├── core
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-313.pyc
+│   │   │   ├── __init__.cpython-314.pyc
+│   │   │   ├── reaper.cpython-313.pyc
+│   │   │   ├── reaper.cpython-314.pyc
+│   │   │   ├── spawner.cpython-313.pyc
+│   │   │   ├── spawner.cpython-314.pyc
+│   │   │   ├── supervisor.cpython-313.pyc
+│   │   │   ├── supervisor.cpython-314.pyc
+│   │   │   ├── worker_bundle.cpython-313.pyc
+│   │   │   ├── worker_bundle.cpython-314.pyc
+│   │   │   ├── worker_entry.cpython-313.pyc
+│   │   │   ├── worker_entry.cpython-314.pyc
+│   │   │   ├── worker_helpers.cpython-313.pyc
+│   │   │   ├── worker_helpers.cpython-314.pyc
+│   │   │   ├── worker_lifecycle.cpython-313.pyc
+│   │   │   └── worker_lifecycle.cpython-314.pyc
+│   │   ├── __init__.py
+│   │   ├── reaper.py
+│   │   ├── spawner.py
+│   │   ├── supervisor.py
+│   │   ├── worker_bundle.py
+│   │   ├── worker_entry.py
+│   │   ├── worker_helpers.py
+│   │   └── worker_lifecycle.py
+│   ├── git
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-313.pyc
+│   │   │   ├── __init__.cpython-314.pyc
+│   │   │   ├── credentials.cpython-313.pyc
+│   │   │   ├── credentials.cpython-314.pyc
+│   │   │   ├── remote_sync.cpython-313.pyc
+│   │   │   ├── remote_sync.cpython-314.pyc
+│   │   │   ├── shadow_push.cpython-313.pyc
+│   │   │   ├── shadow_push.cpython-314.pyc
+│   │   │   ├── shadow_repo.cpython-313.pyc
+│   │   │   ├── shadow_repo.cpython-314.pyc
+│   │   │   ├── shadow_rollback.cpython-313.pyc
+│   │   │   ├── shadow_rollback.cpython-314.pyc
+│   │   │   ├── utils.cpython-313.pyc
+│   │   │   └── utils.cpython-314.pyc
+│   │   ├── __init__.py
+│   │   ├── credentials.py
+│   │   ├── remote_sync.py
+│   │   ├── shadow_push.py
+│   │   ├── shadow_repo.py
+│   │   ├── shadow_rollback.py
+│   │   └── utils.py
+│   ├── server
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-313.pyc
+│   │   │   ├── __init__.cpython-314.pyc
+│   │   │   ├── batch_runner.cpython-313.pyc
+│   │   │   ├── batch_runner.cpython-314.pyc
+│   │   │   ├── db_queries.cpython-313.pyc
+│   │   │   ├── db_queries.cpython-314.pyc
+│   │   │   ├── request_handler.cpython-313.pyc
+│   │   │   ├── request_handler.cpython-314.pyc
+│   │   │   ├── routes_ai.cpython-313.pyc
+│   │   │   ├── routes_ai.cpython-314.pyc
+│   │   │   ├── routes_ai_analysis.cpython-313.pyc
+│   │   │   ├── routes_ai_analysis.cpython-314.pyc
+│   │   │   ├── routes_ai_batch.cpython-314.pyc
+│   │   │   ├── routes_events.cpython-313.pyc
+│   │   │   ├── routes_events.cpython-314.pyc
+│   │   │   ├── routes_events_export.cpython-314.pyc
+│   │   │   ├── routes_projects.cpython-313.pyc
+│   │   │   ├── routes_projects.cpython-314.pyc
+│   │   │   ├── routes_projects_resume.cpython-314.pyc
+│   │   │   ├── routes_trash.cpython-313.pyc
+│   │   │   ├── routes_trash.cpython-314.pyc
+│   │   │   ├── server_daemon.cpython-313.pyc
+│   │   │   └── server_daemon.cpython-314.pyc
+│   │   ├── __init__.py
+│   │   ├── batch_runner.py
+│   │   ├── db_queries.py
+│   │   ├── request_handler.py
+│   │   ├── routes_ai.py
+│   │   ├── routes_ai_analysis.py
+│   │   ├── routes_ai_batch.py
+│   │   ├── routes_events.py
+│   │   ├── routes_events_export.py
+│   │   ├── routes_projects.py
+│   │   ├── routes_projects_resume.py
+│   │   ├── routes_trash.py
+│   │   └── server_daemon.py
+│   ├── shell
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-313.pyc
+│   │   │   ├── __init__.cpython-314.pyc
+│   │   │   ├── classifier.cpython-313.pyc
+│   │   │   ├── classifier.cpython-314.pyc
+│   │   │   ├── cmd_parser.cpython-313.pyc
+│   │   │   ├── cmd_parser.cpython-314.pyc
+│   │   │   ├── tracker.cpython-313.pyc
+│   │   │   └── tracker.cpython-314.pyc
+│   │   ├── __init__.py
+│   │   ├── classifier.py
+│   │   ├── cmd_parser.py
+│   │   └── tracker.py
+│   ├── storage
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-313.pyc
+│   │   │   ├── __init__.cpython-314.pyc
+│   │   │   ├── db.cpython-313.pyc
+│   │   │   ├── db.cpython-314.pyc
+│   │   │   ├── history.cpython-313.pyc
+│   │   │   ├── history.cpython-314.pyc
+│   │   │   ├── meta.cpython-313.pyc
+│   │   │   ├── meta.cpython-314.pyc
+│   │   │   ├── rollback.cpython-313.pyc
+│   │   │   ├── rollback.cpython-314.pyc
+│   │   │   ├── rotator.cpython-313.pyc
+│   │   │   ├── rotator.cpython-314.pyc
+│   │   │   ├── utils.cpython-313.pyc
+│   │   │   └── utils.cpython-314.pyc
+│   │   ├── __init__.py
+│   │   ├── db.py
+│   │   ├── history.py
+│   │   ├── meta.py
+│   │   ├── rollback.py
+│   │   ├── rotator.py
+│   │   └── utils.py
+│   ├── trash
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-313.pyc
+│   │   │   ├── __init__.cpython-314.pyc
+│   │   │   ├── burst_trash.cpython-313.pyc
+│   │   │   ├── burst_trash.cpython-314.pyc
+│   │   │   ├── constants.cpython-313.pyc
+│   │   │   ├── constants.cpython-314.pyc
+│   │   │   ├── fs_ops.cpython-313.pyc
+│   │   │   ├── fs_ops.cpython-314.pyc
+│   │   │   ├── manager.cpython-313.pyc
+│   │   │   ├── manager.cpython-314.pyc
+│   │   │   ├── purge.cpython-313.pyc
+│   │   │   ├── purge.cpython-314.pyc
+│   │   │   ├── remote_gh.cpython-313.pyc
+│   │   │   ├── remote_gh.cpython-314.pyc
+│   │   │   ├── restore.cpython-313.pyc
+│   │   │   └── restore.cpython-314.pyc
+│   │   ├── __init__.py
+│   │   ├── burst_trash.py
+│   │   ├── constants.py
+│   │   ├── fs_ops.py
+│   │   ├── manager.py
+│   │   ├── purge.py
+│   │   ├── remote_gh.py
+│   │   └── restore.py
+│   ├── __init__.py
+│   ├── ai_analyzer.py
+│   ├── diff_calc.py
+│   ├── event_bundler.py
+│   ├── git_shadow.py
+│   ├── ide_profiles.py
+│   ├── orchestrator.py
+│   ├── project_worker.py
+│   ├── shell_interceptor.py
+│   ├── storage_rotator.py
+│   ├── trash_manager.py
+│   ├── watcher_fs.py
+│   ├── watcher_proc.py
+│   └── web_server.py
+├── tests
+│   ├── __pycache__
+│   │   ├── __init__.cpython-313.pyc
+│   │   ├── __init__.cpython-314.pyc
+│   │   ├── mock_activity.cpython-313.pyc
+│   │   ├── test_ai_config.cpython-313.pyc
+│   │   ├── test_ai_config.cpython-314.pyc
+│   │   ├── test_cumulative_history_and_specs.cpython-313.pyc
+│   │   ├── test_cumulative_history_and_specs.cpython-314.pyc
+│   │   ├── test_github_sync.cpython-313.pyc
+│   │   ├── test_github_sync.cpython-314.pyc
+│   │   ├── test_phase4.cpython-313.pyc
+│   │   ├── test_phase4.cpython-314.pyc
+│   │   ├── test_phase5.cpython-313.pyc
+│   │   ├── test_phase5.cpython-314.pyc
+│   │   ├── test_trash_manager.cpython-313.pyc
+│   │   ├── test_trash_manager.cpython-314.pyc
+│   │   ├── test_v10_physical_rollback_and_selective_trash.cpython-313.pyc
+│   │   ├── test_v10_physical_rollback_and_selective_trash.cpython-314.pyc
+│   │   ├── test_v6_upgrades.cpython-313.pyc
+│   │   ├── test_v6_upgrades.cpython-314.pyc
+│   │   ├── test_v7_ide_profiles.cpython-313.pyc
+│   │   ├── test_v7_ide_profiles.cpython-314.pyc
+│   │   ├── test_v8_adaptive_polling_and_command_ai.cpython-313.pyc
+│   │   ├── test_v8_adaptive_polling_and_command_ai.cpython-314.pyc
+│   │   ├── test_v9_crash_rollback_and_lap.cpython-313.pyc
+│   │   ├── test_v9_crash_rollback_and_lap.cpython-314.pyc
+│   │   ├── test_web_server.cpython-313.pyc
+│   │   └── test_web_server.cpython-314.pyc
+│   ├── __init__.py
+│   ├── mock_activity.py
+│   ├── test_ai_config.py
+│   ├── test_cumulative_history_and_specs.py
+│   ├── test_github_sync.py
+│   ├── test_phase4.py
+│   ├── test_phase5.py
+│   ├── test_trash_manager.py
+│   ├── test_v10_physical_rollback_and_selective_trash.py
+│   ├── test_v6_upgrades.py
+│   ├── test_v7_ide_profiles.py
+│   ├── test_v8_adaptive_polling_and_command_ai.py
+│   ├── test_v9_crash_rollback_and_lap.py
+│   └── test_web_server.py
+├── trash
+├── web
+│   ├── css
+│   │   ├── cards.css
+│   │   ├── diff.css
+│   │   ├── layout.css
+│   │   ├── modals.css
+│   │   └── variables.css
+│   ├── js
+│   │   ├── views
+│   │   │   ├── dashboard.js
+│   │   │   ├── diff_viewer.js
+│   │   │   ├── modals.js
+│   │   │   └── timeline.js
+│   │   ├── api.js
+│   │   ├── dom.js
+│   │   ├── sidebar.js
+│   │   ├── state.js
+│   │   ├── stream.js
+│   │   ├── toasts.js
+│   │   └── utils.js
+│   ├── app.js
+│   ├── index.html
+│   └── style.css
+├── .gitignore
+├── __init__.py
+├── all_file_paths.txt
+├── audit_engine.ps1
+├── bundle_codebase.ps1
+├── codebase_bundle.md
+├── dashboard.html
+├── project_tree.txt
+├── requirements.txt
+└── start.py

@@ -1,0 +1,20 @@
+{
+  "burst_id": 6,
+  "session_id": 1,
+  "file_count": 10,
+  "overview": {
+    "src/core/loop.js": "Enhanced the game loop with hardware telemetry, including memory heap tracking and granular timing metrics for physics and rendering.",
+    "src/environment/arena.js": "Introduced a new hazard management system that handles spatial physics for gravity wells, laser gates, and proximity mines.",
+    "src/ai/wave_director.js": "Added a procedural state machine to manage survival waves, enemy spawning, and boss encounters.",
+    "src/combat/weapons.js": "Implemented multi-turret firing logic to support complex boss-level combat patterns.",
+    "src/ecs/systems.js": "Updated the Combat and Render systems to integrate new hazard interactions and boss-specific visual rendering.",
+    "src/ecs/world.js": "Refactored the entity query API to support component-class-based filtering, improving developer ergonomics.",
+    "src/main.js": "Updated the entrypoint to initialize the Wave Director and Arena Manager, while exposing new telemetry data to the debug API.",
+    "index.html": "Updated the UI to include a mission-end modal and integrated the new telemetry suite into the engine badge.",
+    "tests/engine.test.js": "Expanded the test suite to validate hazard physics, wave state transitions, and telemetry accuracy.",
+    "CHANGELOG.md": "Modified file in burst."
+  },
+  "burst_summary": "This burst upgrades NovaPulse to Phase 5, introducing a procedural Wave Director and dynamic Arena Hazards (Black Holes, Laser Gates, Mines) to increase gameplay complexity. The architecture was enhanced with advanced telemetry for performance monitoring, improved ECS query flexibility, and a new boss-tier weapon system, all supported by a robust testing suite to ensure stability under high-density entity loads.",
+  "provider": "gemini-rest:gemini-3.1-flash-lite",
+  "cached": false
+}

@@ -1,0 +1,20 @@
+{
+  "file_path": "index.html",
+  "summary": "This update refactors the HUD and UI layer to support a new wave-based survival mechanic, introducing telemetry-heavy diagnostics and a game-over/victory modal system.",
+  "why_modified": "Architectural Role: The file serves as the declarative UI skeleton for the NovaPulse engine. This burst shifts the focus from a pure sandbox simulation to a structured game loop with win/loss conditions. Behavioral Delta: Removed static object pool diagnostics in favor of high-frequency performance telemetry (CPU/GPU/Frame Delta). Added a 'Wave Announcement' banner for game state feedback and a modal overlay for session end-states. State Mutations: The HUD now tracks dynamic game-state variables like 'Entities/Pool' and 'Canvas Glow' status, and introduces a new modal DOM structure that requires integration with the main game loop for visibility toggling and stat injection.",
+  "changed_symbols": [
+    "HUD elements (IDs: hud-tick-ms, hud-render-ms, hud-frame-ms, hud-entities-cap, hud-gpu-status)",
+    "New UI components (#wave-banner, #game-modal, #modal-card)",
+    "Hotkey interface (Added: G, +, -, K; Modified: X)"
+  ],
+  "breaking_changes": [
+    "Removal of legacy object pool HUD elements may break existing JS selectors in main.js",
+    "New modal DOM structure requires CSS visibility/display state management from the main loop",
+    "Potential race condition if the game loop attempts to update removed HUD IDs before the JS update"
+  ],
+  "risk_level": "MEDIUM",
+  "mode": "deep",
+  "provider": "gemini-rest:gemini-3.1-flash-lite",
+  "cached": false,
+  "diff_hash": "c155ab42b033f56f29bbc3d8b111d13eb5bb1fd3ee6946ff4910321d1ccd8c2a"
+}

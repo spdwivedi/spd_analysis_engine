@@ -1,0 +1,124 @@
+/* ==========================================================================
+   SPD Analysis Engine — Theme Variables & Global Resets
+   Warm Obsidian Purple Palette with Neutral Slate-Grey AI Cards
+   ========================================================================== */
+
+:root {
+  /* Warm Obsidian Purple Core Palette */
+  --bg-primary: #0d0814;           /* Deep obsidian violet */
+  --bg-secondary: #160f24;         /* Rich dark purple container */
+  --bg-card: #1f1633;              /* Warm purple card surface */
+  --bg-card-hover: #2b1f45;
+  --border-color: #372856;
+  --border-focus: #a855f7;
+  --accent-primary: #a855f7;       /* Vibrant purple */
+  --accent-hover: #c084fc;
+  --accent-glow: rgba(168, 85, 247, 0.25);
+  --text-primary: #f5f3ff;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+
+  /* Dedicated Neutral Slate-Grey AI Card Palette */
+  --ai-card-bg: #1e222b;           /* Neutral slate-grey background for AI output */
+  --ai-card-border: #374151;
+  --ai-card-text: #f1f5f9;
+  --ai-card-accent: #a78bfa;
+
+  /* Backward-Compatible Engine Aliases */
+  --bg-app: var(--bg-primary);
+  --bg-sidebar: var(--bg-secondary);
+  --bg-header: var(--bg-secondary);
+  --bg-input: #130a1e;
+  --bg-terminal: #0a0610;
+  --bg-surface-2: var(--bg-secondary);
+
+  --border-subtle: var(--border-color);
+  --border-card: var(--border-color);
+
+  --text-main: var(--text-primary);
+  --text-dim: #7c7294;
+
+  --accent-green: #22c55e;
+  --accent-green-bg: rgba(34, 197, 94, 0.12);
+  --accent-green-border: rgba(34, 197, 94, 0.35);
+
+  --accent-blue: var(--accent-primary);
+  --accent-blue-bg: var(--accent-glow);
+
+  --accent-red: #ef4444;
+  --accent-red-bg: rgba(239, 68, 68, 0.12);
+
+  --accent-amber: #f59e0b;
+  --accent-amber-bg: rgba(245, 158, 11, 0.12);
+
+  --accent-purple: var(--accent-primary);
+  --accent-purple-bg: var(--accent-glow);
+
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  --sidebar-w: 280px;
+  --header-h: 68px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-full: 9999px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.5;
+  overflow: hidden;
+  height: 100vh;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-primary);
+}
+
+/* Global Keyframe Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hidden {
+  display: none !important;
+}
+
+.mono {
+  font-family: var(--font-mono);
+}

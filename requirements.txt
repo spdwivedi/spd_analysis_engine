@@ -1,0 +1,8 @@
+# SPD Analysis Engine - Phase 1 Dependencies
+# Minimum Python version: 3.10+
+
+# File system event monitoring
+watchdog>=4.0.0
+
+# Process introspection (CPU, memory, PID tracking)
+psutil>=5.9.0
