@@ -1,0 +1,112 @@
+/* ==========================================================================
+   SPD Analysis Engine — GPU Optimization ("Eco Mode")
+   Eliminates backdrop filters, glows, shadows, and infinite decorative loops
+   while ensuring all cards, views, and containers remain fully visible.
+   ========================================================================== */
+
+body.eco-mode,
+.eco-mode {
+  --bg-primary: #13151b;
+  --bg-secondary: #141721;
+  --bg-card: #141721;
+  --bg-card-hover: #1c202d;
+  --bg-app: #13151b;
+  --bg-sidebar: #141721;
+  --bg-header: #141721;
+  --bg-surface-2: #141721;
+  --border-color: #232738;
+  --border-card: #232738;
+  --accent-glow: transparent;
+  background-color: #13151b !important;
+}
+
+body.eco-mode *,
+.eco-mode * {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+/* Instantaneous transitions to eliminate rendering overhead */
+.eco-mode * {
+  transition-duration: 0.05s !important;
+}
+
+/* Only apply solid backgrounds and disable blurs on ACTIVE views */
+.eco-mode .view-pane.active,
+.eco-mode .tab-view.active {
+  background: #0d1117 !important;
+  opacity: 1 !important;
+  display: flex !important;
+}
+
+/* Guarantee non-active panes remain completely hidden in Eco Mode */
+.eco-mode .view-pane:not(.active),
+.eco-mode .tab-view:not(.active) {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+}
+
+/* Force all active cards and containers to remain fully visible */
+.eco-mode .card,
+.eco-mode .dashboard-grid,
+.eco-mode .spec-card,
+.eco-mode .project-tier-group,
+.eco-mode .header,
+.eco-mode .sidebar,
+.eco-mode .metric-card,
+.eco-mode .modal-box,
+.eco-mode .modal-content,
+.eco-mode .tray-body,
+.eco-mode .global-job-tray,
+.eco-mode .timeline-card,
+.eco-mode .diff-step-card,
+.eco-mode .diff-sidebar,
+.eco-mode .diff-code-panel,
+.eco-mode .diff-viewer-main,
+.eco-mode .live-ticker-feed,
+.eco-mode .live-ticker-card,
+.eco-mode .ai-analysis-card,
+.eco-mode .heuristic-notice-card,
+.eco-mode .git-test-card,
+.eco-mode .preflight-card,
+.eco-mode .settings-tab-pane:not(.hidden),
+.eco-mode .health-card,
+.eco-mode .settings-section-card {
+  opacity: 1 !important;
+  transform: none !important;
+  background: #141721 !important;
+  border: 1px solid #232738 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Target ONLY infinite decorative loops to eliminate background GPU rasterization */
+.eco-mode .pulse-ring,
+.eco-mode .pulse-dot,
+.eco-mode .sse-live-indicator,
+.eco-mode .spinner,
+.eco-mode .btn-spinner,
+.eco-mode .tray-spinner {
+  animation: none !important;
+  animation-play-state: paused !important;
+}
+
+.eco-mode .modal-backdrop {
+  background-color: rgba(10, 12, 16, 0.88) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Style for the Eco Mode toggle button in active state */
+.btn-eco-mode.active,
+#btn-header-eco-mode.active {
+  background: #22c55e !important;
+  color: #0b0f19 !important;
+  font-weight: 700 !important;
+  border-color: #16a34a !important;
+}

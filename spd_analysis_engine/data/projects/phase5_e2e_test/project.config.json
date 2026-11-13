@@ -1,0 +1,32 @@
+{
+  "slug": "phase5_e2e_test",
+  "display_name": "phase5_e2e_test",
+  "target_path": "D:\\Project_Files\\SPD_Analysis_Engine\\spd_analysis_engine\\mock_workspace\\phase5_e2e_test",
+  "created_at": "2026-10-07T02:41:30Z",
+  "ide_profile": "antigravity",
+  "remote_url": "",
+  "remote_branch": "main",
+  "cloud_ai_enabled": false,
+  "cloud_consent": false,
+  "debounce": 1.5,
+  "debounce_s": 1.5,
+  "debounce_window": 1.5,
+  "legacy_imported": true,
+  "powers": {
+    "track_edits": true,
+    "track_reads": false,
+    "track_exec": true,
+    "shadow_git": true,
+    "ide_profile": "antigravity"
+  },
+  "git_policy": {
+    "shadow_git": true,
+    "git_init_primary": true,
+    "auto_push": false
+  },
+  "watch_policy": {
+    "track_edits": true,
+    "track_reads": false,
+    "track_exec": true
+  }
+}

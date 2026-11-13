@@ -1,0 +1,33 @@
+{
+  "slug": "spd_interviewer",
+  "display_name": "SPD_Interviewer",
+  "target_path": "D:\\Project_Files\\SPD_Interviewer",
+  "created_at": "2026-11-04T15:36:24Z",
+  "ide_profile": "antigravity",
+  "remote_url": "",
+  "remote_branch": "main",
+  "cloud_ai_enabled": false,
+  "cloud_consent": false,
+  "debounce": 600.0,
+  "debounce_s": 600.0,
+  "debounce_window": 600.0,
+  "legacy_imported": true,
+  "powers": {
+    "track_edits": true,
+    "track_reads": true,
+    "track_exec": true,
+    "shadow_git": true,
+    "ide_profile": "antigravity"
+  },
+  "git_policy": {
+    "shadow_git": true,
+    "git_init_primary": true,
+    "auto_push": false
+  },
+  "watch_policy": {
+    "track_edits": true,
+    "track_reads": true,
+    "track_exec": true
+  },
+  "ide_custom_marker": "None"
+}

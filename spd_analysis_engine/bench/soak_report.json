@@ -1,0 +1,20 @@
+{
+  "start_time": "2026-10-06T23:04:23Z",
+  "end_time": "2026-10-06T23:04:27Z",
+  "duration_s": 3.17,
+  "samples_collected": 5,
+  "baseline_rss_mb": 34.8,
+  "peak_rss_mb": 34.82,
+  "final_rss_mb": 34.71,
+  "rss_drift_pct": -0.28,
+  "avg_cpu_percent": 0.0,
+  "peak_cpu_percent": 0.0,
+  "events_ingested": 177,
+  "bursts_sealed": 18,
+  "dropped_bundles": 0,
+  "deadlock_detected": false,
+  "winerror_count": 0,
+  "max_heartbeat_staleness_s": 0.0,
+  "passed": true,
+  "failure_reasons": []
+}

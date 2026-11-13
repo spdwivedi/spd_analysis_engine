@@ -1,0 +1,33 @@
+{
+  "slug": "live_node_graph_engine",
+  "display_name": "Live Node Graph Engine",
+  "target_path": "D:\\Project_Files\\Live_Node_Graph_Engine",
+  "created_at": "2026-10-08T22:48:04Z",
+  "ide_profile": "antigravity",
+  "remote_url": "",
+  "remote_branch": "main",
+  "cloud_ai_enabled": false,
+  "cloud_consent": false,
+  "debounce": 600.0,
+  "debounce_s": 600.0,
+  "debounce_window": 600.0,
+  "legacy_imported": true,
+  "powers": {
+    "track_edits": true,
+    "track_reads": true,
+    "track_exec": true,
+    "shadow_git": true,
+    "ide_profile": "antigravity"
+  },
+  "git_policy": {
+    "shadow_git": true,
+    "git_init_primary": false,
+    "auto_push": false
+  },
+  "watch_policy": {
+    "track_edits": true,
+    "track_reads": true,
+    "track_exec": true
+  },
+  "ide_custom_marker": "None"
+}

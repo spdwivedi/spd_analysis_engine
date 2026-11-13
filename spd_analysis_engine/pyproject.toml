@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "spd-analysis-engine"
+version = "0.1.0"
+description = "SPD Analysis Engine - local-first telemetry daemon"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "watchdog>=4.0.0",
+    "psutil>=5.9.0",
+]
+
+[tool.setuptools]
+package-dir = { spd_analysis_engine = "." }
+packages = [
+    "spd_analysis_engine",
+    "spd_analysis_engine.scripts",
+    "spd_analysis_engine.scripts.ai",
+    "spd_analysis_engine.scripts.controller",
+    "spd_analysis_engine.scripts.core",
+    "spd_analysis_engine.scripts.git",
+    "spd_analysis_engine.scripts.server",
+    "spd_analysis_engine.scripts.shell",
+    "spd_analysis_engine.scripts.storage",
+    "spd_analysis_engine.scripts.trash",
+]

@@ -1,0 +1,34 @@
+{
+  "timestamp": "2026-10-06T23:06:11Z",
+  "mode": "full",
+  "baseline": {
+    "rss_mb": 36.56,
+    "idle_cpu_percent": 0.0
+  },
+  "metrics": {
+    "events_per_sec": 7304.4,
+    "ingest_duration_ms": 684.52,
+    "event_to_sse_p50_ms": 31.52,
+    "event_to_sse_p95_ms": 32.15,
+    "event_to_sse_p99_ms": 32.15,
+    "git_commit_scaling": {
+      "10_files_ms": 194.21,
+      "100_files_ms": 289.75,
+      "1000_files_ms": 1101.53,
+      "2000_files_ms": 1934.27
+    },
+    "git_commit_time_ms": 194.21,
+    "sqlite_read_contention_p50_ms": 0.028,
+    "sqlite_read_contention_p95_ms": 0.044,
+    "db_total_size_kb": 472.0,
+    "db_growth_bytes_per_event": 483.3,
+    "sse_client_count": 50,
+    "sse_kb_per_client": 1.84,
+    "events_summary_payload_bytes": 6264,
+    "events_detail_payload_bytes": 4554,
+    "summary_compression_ratio": 0.73,
+    "ai_queue_avg_latency_ms": 6.7,
+    "final_rss_mb": 39.46,
+    "final_idle_cpu_percent": 0.0
+  }
+}
